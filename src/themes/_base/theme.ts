@@ -8,14 +8,16 @@ export const DEFAULT_COLOR_SCHEME: ColorSystemOptions = {
     palette: {
         mode: 'dark',
         primary: {
-            main: '#00a4dc'
+            main: '#ffe600',
+            contrastText: '#1f1f1f'
         },
         secondary: {
-            main: '#00a4dc'
+            main: '#ffe600',
+            contrastText: '#1f1f1f'
         },
         background: {
-            default: '#101010',
-            paper: '#202020'
+            default: '#1f1f1f',
+            paper: '#292929'
         },
         action: {
             selectedOpacity: 0.2
@@ -27,7 +29,7 @@ export const DEFAULT_COLOR_SCHEME: ColorSystemOptions = {
             main: '#c62828' // Red color
         },
         AppBar: {
-            defaultBg: '#202020'
+            defaultBg: '#292929'
         }
     }
 };
@@ -35,7 +37,7 @@ export const DEFAULT_COLOR_SCHEME: ColorSystemOptions = {
 /** The default customizations to the default MUI theme. */
 export const DEFAULT_THEME_OPTIONS: ThemeOptions = {
     typography: {
-        fontFamily: '"Noto Sans", sans-serif',
+        fontFamily: 'Sora, sans-serif',
         button: {
             textTransform: 'none'
         },

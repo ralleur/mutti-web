@@ -1,7 +1,10 @@
 import loading from 'components/loading/loading';
+import globalize from 'lib/globalize';
+import toast from 'components/toast/toast';
 import { ServerConnections } from 'lib/jellyfin-apiclient';
 import Dashboard from 'utils/dashboard';
 import dom from 'utils/dom';
+import { selectSetupLanguage } from 'mutti/locale';
 
 import 'elements/emby-button/emby-button';
 import 'elements/emby-select/emby-select';
@@ -14,7 +17,7 @@ function loadPage(page, systemInfo, config, languageOptions) {
     languageElem.innerHTML = languageOptions.map(function (l) {
         return '<option value="' + l.Value + '">' + l.Name + '</option>';
     }).join('');
-    languageElem.value = config.UICulture;
+    languageElem.value = selectSetupLanguage(languageOptions, globalize.getCurrentLocale(), config.UICulture);
 
     loading.hide();
 }
@@ -26,7 +29,7 @@ function save(page) {
         config.ServerName = page.querySelector('#txtServerName').value;
         config.UICulture = page.querySelector('#selectLocalizationLanguage').value;
 
-        apiClient.ajax({
+        return apiClient.ajax({
             type: 'POST',
             data: JSON.stringify(config),
             url: apiClient.getUrl('Startup/Configuration'),
@@ -34,6 +37,9 @@ function save(page) {
         }).then(function () {
             Dashboard.navigate('wizard/user');
         });
+    }).catch(() => {
+        loading.hide();
+        toast(globalize.translate('ErrorDefault'));
     });
 }
 
@@ -57,6 +63,9 @@ export default function (view) {
             apiClient.getJSON(apiClient.getUrl('Localization/Options'))
         ]).then(([ systemInfo, config, languageOptions ]) => {
             loadPage(page, systemInfo, config, languageOptions);
+        }).catch(() => {
+            loading.hide();
+            toast(globalize.translate('ErrorDefault'));
         });
     });
 

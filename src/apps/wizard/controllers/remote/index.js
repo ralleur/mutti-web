@@ -1,4 +1,6 @@
 import loading from 'components/loading/loading';
+import toast from 'components/toast/toast';
+import globalize from 'lib/globalize';
 import { ServerConnections } from 'lib/jellyfin-apiclient';
 import Dashboard from 'utils/dashboard';
 
@@ -6,11 +8,11 @@ import 'elements/emby-checkbox/emby-checkbox';
 import 'elements/emby-button/emby-button';
 import 'elements/emby-select/emby-select';
 
-function save(page) {
+function save() {
     loading.show();
     const apiClient = ServerConnections.currentApiClient();
     const config = {
-        EnableRemoteAccess: page.querySelector('#chkRemoteAccess').checked
+        EnableRemoteAccess: false
     };
 
     apiClient.ajax({
@@ -21,6 +23,9 @@ function save(page) {
     }).then(function () {
         loading.hide();
         navigateToNextPage();
+    }).catch(() => {
+        loading.hide();
+        toast(globalize.translate('ErrorDefault'));
     });
 }
 
@@ -29,7 +34,7 @@ function navigateToNextPage() {
 }
 
 function onSubmit(e) {
-    save(this);
+    save();
     e.preventDefault();
     return false;
 }
