@@ -9,3 +9,8 @@ declare module '*.scss' {
     const value: string;
     export default value;
 }
+
+declare module '*.svg' {
+    const source: string;
+    export default source;
+}

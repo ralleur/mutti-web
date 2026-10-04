@@ -211,6 +211,13 @@ class DirectoryBrowser {
 
     show = options => {
         options = options || {};
+        const nativePicker = window.webkit?.messageHandlers?.muttiFolder;
+        if (nativePicker && !options.includeFiles && !options.pathReadOnly) {
+            nativePicker.postMessage({}).then(path => {
+                if (path && options.callback) options.callback(path);
+            }).catch(() => { /* The native dialog was unavailable; no path is selected. */ });
+            return;
+        }
         const fileOptions = {
             includeDirectories: true
         };

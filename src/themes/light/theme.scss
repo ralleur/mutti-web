@@ -4,10 +4,14 @@
 @use '../_base/theme' with (
     // Theme options
     $dark: false,
+    $primary-main: #625800,
+    $primary-contrastText: #fff,
+    $primary-dark: #494200,
+    $primary-light: #807300,
 
     // Color palette
-    $background-default: #f2f2f2,
-    $background-paper: #e8e8e8,
+    $background-default: #faf8f1,
+    $background-paper: #f0eee7,
     $text-primary: #000,
     $text-secondary: rgba(0, 0, 0, 0.87),
     $action-focus: #bbb,
@@ -15,7 +19,7 @@
     $divider: rgba(0, 0, 0, 0.14),
 
     // Components
-    $appBar-defaultBg: #e8e8e8,
+    $appBar-defaultBg: #f0eee7,
     $appBar-transparentBg: rgba(232, 232, 232, 0.86),
     $alert-infoFilledBg: #fff3a5,
     $alert-infoFilledColor: #000,

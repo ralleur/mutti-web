@@ -1,0 +1,90 @@
+// Mutti identity. Source tokens: ralleur/mutti/mutti/design/tokens.json.
+@font-face {
+    font-family: Sora;
+    src: url('../assets/mutti/Sora-Regular.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Sora;
+    src: url('../assets/mutti/Sora-SemiBold.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Sora;
+    src: url('../assets/mutti/Sora-Bold.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+input,
+select,
+textarea,
+.emby-button {
+    font-family: Sora, sans-serif;
+}
+
+.wizardPage .wizardContent {
+    max-width: 42rem;
+    margin: 4vh auto;
+    padding: clamp(1.25rem, 4vw, 3rem);
+    border-radius: 24px;
+    background: var(--jf-palette-background-paper, #292929);
+}
+
+.wizardContent h1 {
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+}
+
+.wizardContent p {
+    line-height: 1.65;
+}
+
+.wizardContent .emby-input,
+.wizardContent .emby-select,
+.wizardContent .emby-button {
+    border-radius: 12px;
+}
+
+.mutti-eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.75;
+}
+
+.mutti-notice {
+    border-inline-start: 3px solid #ffe600;
+    padding-inline-start: 1rem;
+}
+
+.wizardNavigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.75rem;
+}
+
+.wizardContent :focus-visible {
+    outline: 3px solid var(--jf-palette-primary-main, #ffe600);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .splashLogo {
+        animation: none;
+    }
+}
