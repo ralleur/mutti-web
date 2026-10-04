@@ -4,6 +4,7 @@ import toast from 'components/toast/toast';
 import { ServerConnections } from 'lib/jellyfin-apiclient';
 import Dashboard from 'utils/dashboard';
 import dom from 'utils/dom';
+import { selectSetupLanguage } from 'mutti/locale';
 
 import 'elements/emby-button/emby-button';
 import 'elements/emby-select/emby-select';
@@ -16,7 +17,7 @@ function loadPage(page, systemInfo, config, languageOptions) {
     languageElem.innerHTML = languageOptions.map(function (l) {
         return '<option value="' + l.Value + '">' + l.Name + '</option>';
     }).join('');
-    languageElem.value = globalize.getCurrentLocale() || config.UICulture;
+    languageElem.value = selectSetupLanguage(languageOptions, globalize.getCurrentLocale(), config.UICulture);
 
     loading.hide();
 }
